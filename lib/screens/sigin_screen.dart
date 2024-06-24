@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:globalchat/controller/sigin_screen_controller.dart';
 
 class SignScreen extends StatefulWidget {
   final VoidCallback show;
@@ -98,7 +99,14 @@ class _SignScreenState extends State<SignScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: InkWell(
                     onTap: () {
-                      if (_formkey.currentState!.validate()) {}
+                      if (_formkey.currentState!.validate()) {
+                        SignupController.createAccount(
+                            context: context,
+                            email: email_controller.text,
+                            password: password_controller.text,
+                            name: name_controller.text,
+                            country: country_controller.text);
+                      }
                     },
                     child: Container(
                       width: double.infinity,

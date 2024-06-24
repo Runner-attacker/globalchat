@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "776982699675",
+    "project_id": "globalchat-fcc3b",
+    "storage_bucket": "globalchat-fcc3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776982699675:android:df5eea0ef90e587eceb03e",
+        "android_client_info": {
+          "package_name": "com.example.globalchat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDog0wnwiwgFlKiDiLhu0OuOcChGt2OL7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

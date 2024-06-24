@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:globalchat/controller/login_screen_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   final VoidCallback show;
@@ -62,19 +63,29 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                child: Container(
-                  width: double.infinity,
-                  height: 50.0,
-                  decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(12.0)),
-                  child: Center(
-                    child: Text(
-                      "Login",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
+                child: InkWell(
+                  onTap: () {
+                    if (_formkey.currentState!.validate()) {
+                      LoginScreenController().LoggedUser(
+                          context: context,
+                          email: emailcontroller.text,
+                          password: passwordcontroller.text);
+                    }
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 50.0,
+                    decoration: BoxDecoration(
+                        color: Colors.blueAccent,
+                        borderRadius: BorderRadius.circular(12.0)),
+                    child: Center(
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
+                      ),
                     ),
                   ),
                 ),

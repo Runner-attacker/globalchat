@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:globalchat/providers/userProvider.dart';
 import 'package:globalchat/screens/dashboard_screen.dart';
+import 'package:globalchat/screens/login_screen.dart';
 import 'package:globalchat/screentoogle.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -10,27 +14,32 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  bool signedin = false;
   void initState() {
+    var user = FirebaseAuth.instance.currentUser;
     Future.delayed(Duration(seconds: 2), () {
-      if (signedin) {
+      if (user == null) {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => DashboardScreen(),
+              builder: (context) => Screentoogle(),
             ));
       } else {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Screentoogle(),
-          ),
-          (route) => false,
-        );
+        OpenDashboard();
       }
     });
     // TODO: implement initState
     super.initState();
+  }
+
+  void OpenDashboard() {
+    Provider.of<Userprovider>(context, listen: false).getUserDetails();
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DashboardScreen(),
+      ),
+      (route) => false,
+    );
   }
 
   @override
